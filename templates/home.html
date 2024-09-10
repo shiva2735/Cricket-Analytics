@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CricketAnalytics</title>
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+
+    <style>
+      /*-------------------------------------
+        3. Top-area
+		--------------------------------------*/
+
+      /*.navbar-brand*/
+      .navbar-header a.navbar-brand,
+      .navbar-header a.navbar-brand:hover,
+      .navbar-header a.navbar-brand:focus {
+        display: inline-block;
+        color: #1b1e20;
+        font-size: 20px;
+        font-weight: 700;
+        padding: 34px 0px;
+        text-transform: capitalize;
+      }
+
+      .navbar-header a.navbar-brand span {
+        display: inline-block;
+        color: #41cef5;
+        text-transform: capitalize;
+      }
+
+      navbar-nav ul > li > a {
+        color: #859098;
+        font-size: 14px;
+        font-weight: 500;
+        text-transform: uppercase;
+        -webkit-transition: 0.3s linear;
+        -moz-transition: 0.3s linear;
+        -ms-transition: 0.3s linear;
+        -o-transition: 0.3s linear;
+        transition: 0.3s linear;
+      }
+
+      .navbar-nav li > a:hover,
+      .navbar-nav li > a:focus {
+        color: #41cef5;
+      }
+
+      navbar-nav li.active > a {
+        color: #41cef5;
+      }
+      .navigation {
+        display: flex;
+        justify-content: flex-end;
+      }
+
+      .welcome-hero {
+        position: relative;
+        /* Replace the URL with the correct path to your image */
+        background: url('../static/images/banner.jpg') no-repeat;
+          no-repeat;
+        background-position: center;
+        background-size: cover;
+        text-align: center;
+        height: 800px;
+        z-index: 1;
+      }
+
+      .welcome-hero:before {
+        position: absolute;
+        content: " ";
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(65, 73, 89, 0.65);
+        z-index: -1;
+      }
+
+      .welcome-hero-txt {
+        padding-top: 155px;
+      }
+
+      .welcome-hero-txt h2 {
+        font-family: "Serif";
+        font-size: 48px;
+        color: #fff;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 2.4px;
+        line-height: 1.4;
+      }
+
+      .welcome-hero-txt p {
+        font-family: "Serif";
+        font-size: 18px;
+        color: #fcfcfc;
+        margin-top: 25px;
+      }
+
+      /* Default styles for larger screens */
+      .welcome-hero-txt .heading {
+        font-size: 48px; /* Default font size for heading */
+      }
+
+      .welcome-hero-txt .para {
+        font-size: 20px; /* Default font size for paragraph */
+      }
+
+      /* Media query for screen sizes up to 600px */
+      @media only screen and (max-width: 600px) {
+        .welcome-hero-txt .heading {
+          font-size: 20px; /* Font size for heading on smaller screens */
+        }
+
+        .welcome-hero-txt .para {
+          font-size: 16px; /* Font size for paragraph on smaller screens */
+        }
+      }
+
+      /* Media query for screen sizes between 601px and 900px */
+      @media only screen and (min-width: 601px) and (max-width: 900px) {
+        .welcome-hero-txt .heading {
+          font-size: 25px; /* Font size for heading on medium-sized screens */
+        }
+
+        .welcome-hero-txt .para {
+          font-size: 15px; /* Font size for paragraph on medium-sized screens */
+        }
+      }
+
+      /* Media query for screen sizes above 900px */
+      @media only screen and (min-width: 901px) and (max-width: 1100px) {
+        .welcome-hero-txt .heading {
+          font-size: 35px; /* Font size for heading on larger screens */
+        }
+
+        .welcome-hero-txt .para {
+          font-size: 25px; /* Font size for paragraph on larger screens */
+        }
+      }
+
+      .Logo {
+        width: 80px;
+        height: 50px;
+        border-radius: 50%;
+      }
+
+      .searchBox {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, 50%);
+        background: #ffffff;
+        /* White background for search box */
+        border-radius: 40px;
+        padding: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        /* Adding a subtle shadow */
+        width: 300px;
+        /* Adjust the width of the search box */
+      }
+
+      .searchBox:hover > .searchInput {
+        width: calc(100% - 60px);
+        /* Adjust the width of the search input */
+        padding: 0 6px;
+      }
+
+      .searchBox:hover > .searchButton {
+        background: #d3d3d3;
+        /* Silver background for button on hover */
+        color: #000000;
+        /* Black text color */
+      }
+
+      .searchButton {
+        color: #ffffff;
+        /* White text color */
+        float: right;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: #d3d3d3;
+        /* Silver background for button */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: 0.4s;
+      }
+
+      .searchInput {
+        border: none;
+        background: none;
+        outline: none;
+        float: left;
+        padding: 0;
+        color: #000000;
+        /* Black text color */
+        font-size: 18px;
+        transition: 0.4s;
+        line-height: 40px;
+        width: calc(100% - 50px);
+        /* Adjust the width of the search input */
+      }
+
+      #suggestions {
+        position: absolute;
+        top: calc(100% + 10px);
+        /* Position the suggestions below the search box */
+        left: 0;
+        width: 100%;
+        background: #ffffff;
+        /* White background for suggestions */
+        border-radius: 5px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        /* Adding a subtle shadow */
+        z-index: 1;
+        /* Ensure suggestions appear above other elements */
+      }
+
+      #suggestions > div {
+        padding: 10px;
+        cursor: pointer;
+      }
+
+      #suggestions > div:hover {
+        background-color: #f0f0f0;
+        /* Light gray background on hover */
+      }
+
+      @media screen and (max-width: 620px) {
+        .searchBox:hover > .searchInput {
+          width: 150px;
+          padding: 0 6px;
+        }
+      }
+
+      /*-------------------------------------
+        6. Works
+      --------------------------------------*/
+      .works {
+        font-family: "Times New Roman", Times, serif;
+        padding: 0 0 90px;
+      }
+
+      .works-content {
+        margin-top: 73px;
+      }
+      .src {
+        width: 80%;
+        height: 60%;
+      }
+      .box {
+        transition: box-shadow 0.3s, background-color 0.3s;
+        width: 300px;
+        height: 500px;
+        border-radius: 10px;
+        border: 1px solid #ccc;
+        background: linear-gradient(to bottom right, #ff7e5f, #feb47b);
+        float: left;
+        padding: 20px;
+      }
+
+      .box:hover {
+        box-shadow: 0 0 20px rgba(33, 33, 33, 0.4);
+        background: linear-gradient(to bottom right, #ffad99, #ffd699);
+        transform: scale(1.05);
+      }
+
+      .box p {
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        color: #333;
+        line-height: 1.6;
+      }
+
+      .box .icon {
+        font-size: 24px;
+        color: #fff;
+        margin-right: 10px;
+      }
+    </style>
+  </head>
+
+  <body style="font-family: 'Times New Roman', Times, serif">
+    <section class="top-area sticky-top">
+      <div class="header-area">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <img
+                src="{{ url_for('static', filename='images/Logo.png') }}"
+                alt="Logo"
+                class="Logo"
+              />
+              <a class="navbar-brand" href="home.html"
+                >Cricket<span>Analytics</span></a
+              >
+            </div>
+            <!-- Add the navbar toggle button -->
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarNav"
+              aria-controls="navbarNav"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div
+              class="collapse navbar-collapse navigation"
+              id="navbarNav"
+              style="font-family: 'Times New Roman', Times, serif"
+            >
+              <ul class="navbar-nav" style="font-size: 20px">
+                <li class="active" style="margin-right: 10px">
+                  <a class="nav-link active" aria-current="page" href="#Home"
+                    >Home</a
+                  >
+                </li>
+                <li style="margin-right: 10px">
+                  <a class="nav-link" href="#works">How it works</a>
+                </li>
+                <li style="margin-right: 10px">
+                  <a class="nav-link" href="#contact">Contact</a>
+                </li>
+                <form class="form" action="/similar" method="post">
+                <button style="border: none; font-size: 20px"
+                    class="btn btn-outline-info" type="submit" name="roster" value="roster">Roster</button>
+              </form>
+                <form class="form" action="/similar" method="post">
+                  <button
+                    style="border: none; font-size: 20px"
+                    class="btn btn-outline-info"
+                    type="submit"
+                    name="logout"
+                    value="logout"
+                    onclick="alert()"
+                  >
+                    logout
+                  </button>
+                </form>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </section>
+    <section id="Home" class="welcome-hero">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="welcome-hero-txt col-12">
+            <h2 class="heading">
+              "Welcome to Cricket Analytics, <br />
+              where data meets strategy to redefine the game."
+            </h2>
+            <p class="para">Uncover the insights, outsmart the competition.</p>
+          </div>
+
+          <div id="HomeSection" class="searchBox col-12">
+            <form action="/home" method="POST" class="form">
+              <input
+                class="searchInput"
+                type="text"
+                name="searchInput"
+                id="searchInput"
+                placeholder="Search for a player"
+              />
+              <div id="suggestions"></div>
+              <button class="searchButton" type="submit">
+                <i class="material-icons">search</i>
+                <!-- Magnifying glass icon -->
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    <br />
+
+    <section id="works" class="works" style="padding: 20px">
+      <div class="container">
+        <div class="section-header" align="center">
+          <h2 style="color: #41cef5">How it Works</h2>
+          <p>Learn More about how our website works</p>
+        </div>
+        <!--/.section-header-->
+        <div class="works-content">
+          <div class="row">
+            <div class="col-md-4 col-12">
+              <div class="single-how-works box">
+                <img
+                  src="{{ url_for('static', filename='images/requirements.jpg') }}"
+                  alt="Requirements Screenshot"
+                  class="src"
+                />
+
+                <h2>
+                  <p
+                    style="
+                      padding: 3px;
+                      font-size: 20px;
+                      font-family: 'Times New Roman', Times, serif;
+                    "
+                  >
+                    Choose <span> What to</span> Do
+                  </p>
+                </h2>
+                <p>
+                  After searching for a player who appeared in auction, Select
+                  Requirements based on the user interests
+                </p>
+              </div>
+            </div>
+            <div class="col-md-4 col-12">
+              <div class="single-how-works box">
+                <img
+                  src="{{ url_for('static', filename='images/similar.jpg') }}"
+                  alt="Similar Players display"
+                  class="src"
+                />
+                <h2>
+                  <p
+                    style="
+                      padding: 3px;
+                      font-size: 20px;
+                      font-family: 'Times New Roman', Times, serif;
+                    "
+                  >
+                    Find <span> What you want</span>
+                  </p>
+                </h2>
+                <p>
+                  Get the players similar to the opted requirements, Analyze
+                  each players Stats,Age,Price,etc...
+                </p>
+              </div>
+            </div>
+            <div class="col-md-4 col-12">
+              <div class="single-how-works box">
+                <img
+                  src="{{ url_for('static', filename='images/roster.jpg') }}"
+                  alt="Roster Management Screenshot"
+                  class="src"
+                />
+                <h2>
+                  <p
+                    style="
+                      padding: 3px;
+                      font-size: 20px;
+                      font-family: 'Times New Roman', Times, serif;
+                    "
+                  >
+                    Explore <span> Amazing</span> Things
+                  </p>
+                </h2>
+
+                <p>
+                  Form your Teams more efficiently.Save the budget and gain the
+                  benefit of using our website.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--/.container-->
+    </section>
+    <br />
+    <section
+      id="contact"
+      style="font-family: 'Times New Roman', Times, serif; padding-top: 20px"
+    >
+      <div class="contact-top" align="center">
+        <h1 style="font-weight: bold; color: #41cef5">Contact Us</h1>
+        <p>Reach out for any queries or help...</p>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 col-12 mt-1">
+            <div
+              align="center"
+              class="contact-item"
+              style="
+                padding: 50px;
+                background-color: #41cef5;
+                border-radius: 10px;
+              "
+            >
+              <div style="margin-bottom: 20px">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  width="48"
+                  height="48"
+                  style="fill: #ffffff"
+                >
+                  <path
+                    d="M18 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zM9 20H7v-2h2zm4 0h-2v-2h2zm4 0h-2v-2h2zm2-4H5V6h14z"
+                  />
+                </svg>
+              </div>
+              <div>
+                <h2 style="color: #ffffff">Call Today</h2>
+                <p style="color: #ffffff; font-size: 18px">+91 9999 9999</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-4 mt-1">
+            <div
+              align="center"
+              class="contact-item"
+              style="
+                padding: 50px;
+                background-color: #d2aa0e;
+                border-radius: 10px;
+              "
+            >
+              <div style="margin-bottom: 20px">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  width="48"
+                  height="48"
+                  style="fill: #ffffff"
+                >
+                  <path
+                    d="M18 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zM9 20H7v-2h2zm4 0h-2v-2h2zm4 0h-2v-2h2zm2-4H5V6h14z"
+                  />
+                </svg>
+              </div>
+              <div>
+                <h2 style="color: #ffffff">Request Quote</h2>
+                <p style="color: #ffffff; font-size: 18px">+91 9999 9999</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-4 mt-1">
+            <div
+              align="center"
+              class="contact-item"
+              style="
+                padding: 50px;
+                background-color: #ee422b;
+                border-radius: 10px;
+              "
+            >
+              <div style="margin-bottom: 20px">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  width="48"
+                  height="48"
+                  style="fill: #ffffff"
+                >
+                  <path
+                    d="M18 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zM9 20H7v-2h2zm4 0h-2v-2h2zm4 0h-2v-2h2zm2-4H5V6h14z"
+                  />
+                </svg>
+              </div>
+              <div>
+                <h2 style="color: #ffffff">Email Today</h2>
+                <p style="color: #ffffff; font-size: 18px">
+                  CricketAnalytics@gmail.com
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      const searchInput = document.querySelector(".searchInput");
+      const suggestionsDiv = document.getElementById("suggestions");
+
+      searchInput.addEventListener("input", function () {
+        const query = this.value.trim();
+        if (query) {
+          fetch(`/suggestions?query=${query}`)
+            .then((response) => response.json())
+            .then((suggestions) => displaySuggestions(suggestions))
+            .catch((error) =>
+              console.error("Error fetching suggestions:", error)
+            );
+        } else {
+          suggestionsDiv.innerHTML = ""; // Clear suggestions when input is empty
+        }
+      });
+
+      function displaySuggestions(suggestions) {
+        suggestionsDiv.innerHTML = ""; // Clear previous suggestions
+        suggestions.forEach((suggestion) => {
+          const suggestionElement = document.createElement("div");
+          suggestionElement.textContent = suggestion;
+          suggestionElement.addEventListener("click", function () {
+            searchInput.value = suggestion; // Fill the search input with the clicked suggestion
+            suggestionsDiv.innerHTML = ""; // Clear suggestions after selection
+          });
+          suggestionsDiv.appendChild(suggestionElement);
+        });
+      }
+      function alert() {
+        alert("Successfully logging out!");
+      }
+    </script>
+  </body>
+</html>
